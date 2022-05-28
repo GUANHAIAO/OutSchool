@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<title>外出登记二维码</title>
+		<link rel="stylesheet" href="css/outSchool.css" type="text/css" />
+	</head>
+	<body>
+		<div id="app" data-v-app="">
+			<div id="app">
+				<div class="page-container" data-v-fae8cc3a="">
+					<div id="show_time" align="center" style="background-color: #fff;font-size: 20px;text-align: center;padding: 20px 0;"> 
+						data-v-fae8cc3a="">
+						<script>
+							//这里代码多了几行，但是不会延迟显示，速度比较好，格式可以自定义，是理想的时间显示
+							setInterval("fun(show_time)", 1);
+							function fun(timeID) {
+								var date = new Date(); //创建对象  
+								var y = date.getFullYear(); //获取年份  
+								var m = date.getMonth() + 1; //获取月份  返回0-11  
+								var d = date.getDate(); // 获取日  
+								var w = date.getDay(); //获取星期几  返回0-6   (0=星期天) 
+								var h = date.getHours(); //时
+								var minute = date.getMinutes() //分
+								var s = date.getSeconds(); //秒
+								if (m < 10) {
+									m = "0" + m;
+								}
+								if (d < 10) {
+									d = "0" + d;
+								}
+								if (h < 10) {
+									h = "0" + h;
+								}
+								if (minute < 10) {
+									minute = "0" + minute;
+								}
+								if (s < 10) {
+									s = "0" + s;
+								}
+								document.getElementById(timeID.id).innerHTML = y + "-" + m + "-" + d + "   " + h + ":" + minute + ":" + s;
+								//document.write(y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s);  
+							}
+						</script>
+					</div>
+					<div class="ex-qrcode center qrcode" align="center" style="background-color: #f5f5f5" width="180"
+						height="180" data-v-544d011e="" data-v-fae8cc3a="">
+						<img style="height: 120px;width: 120px;margin-top: 20px;margin-bottom: 20px;"
+							src="img/qrcode.png" />
+					</div>
+					<div>
+						<div class="van-cell-group__title" style="background-color: #f5f5f5">外出时间</div>
+						<div class="van-cell-group van-hairline--top-bottom mg-b">
+							<div class="van-cell van-cell--large" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>离校时间</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+								<span id="ymd" class="text-black" style="font-weight: bold;color: #333!important;">
+								<script>
+									var date = new Date()<!--获得日期数据-->
+									var y = date.getFullYear();<!--年-->
+									var m = date.getMonth()+1;<!--月，这里的月份必须要+1才是当前月份-->
+									var d = date.getDate(); <!--日，getDay是获得当前星期几（0-6），getDate是获得当前日期-->
+									var w = date.getDay(); //获取星期几  返回0-6   (0=星期天)
+									var h = date.getHours(); //时
+									var minute = date.getMinutes() //分
+										if (m < 10) {
+											m = "0" + m;
+													}
+										if (d < 10) {
+											d = "0" + d;
+													}
+										if (h < 10) {
+											h = "0" + h;
+													}
+										if (minute < 10) {
+											minute = "0" + minute;
+													}
+									function getQueryParams(qs) {
+											qs = qs.split('+').join(' ');
+											var params = {},
+											tokens,
+											re = /[?&]?([^=]+)=([^&]*)/g;
+									 
+										while (tokens = re.exec(qs)) {
+										params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+										}
+									return params;
+										}
+										var query = getQueryParams(document.location.search);
+									var outTime = query.outTime
+									document.getElementById("ymd").innerHTML = y+"-"+m+"-"+d+" "+h+":00";
+								</script>
+								</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+							<div class="van-cell van-cell--large" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>回校时间</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+								<span id="ymd1" class="text-black" style="font-weight: bold;color: #333!important;">
+								<script>
+									var date = new Date()<!--获得日期数据-->
+									var y = date.getFullYear();<!--年-->
+									var m = date.getMonth()+1;<!--月，这里的月份必须要+1才是当前月份-->
+									var d = date.getDate(); <!--日，getDay是获得当前星期几（0-6），getDate是获得当前日期-->
+									var w = date.getDay(); //获取星期几  返回0-6   (0=星期天)
+									var h = date.getHours(); //时
+									var minute = date.getMinutes() //分
+										if (m < 10) {
+											m = "0" + m;
+													}
+										if (d < 10) {
+											d = "0" + d;
+													}
+										if (h < 10) {
+											h = "0" + (h+2);
+													}
+										else{
+											h = h+2;
+										}
+										if (minute < 10) {
+											minute = "0" + minute;
+													}
+									function getQueryParams(qs) {
+											qs = qs.split('+').join(' ');
+											var params = {},
+											tokens,
+											re = /[?&]?([^=]+)=([^&]*)/g;
+									 
+										while (tokens = re.exec(qs)) {
+										params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+										}
+									return params;
+										}
+										var query = getQueryParams(document.location.search);
+									var inTime = query.inTime
+									document.getElementById("ymd1").innerHTML = y+"-"+m+"-"+d+" "+ h +":00";
+								</script>
+								</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+						</div>
+						<div class="van-cell-group__title" style="background-color: #f5f5f5">学生信息</div>
+						<div class="van-cell-group van-hairline--top-bottom">
+
+							<div class="van-cell" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>姓名</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+									
+									<span class="name">
+										彭洁莹
+									</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+							<div class="van-cell" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>学号</span>
+									<!---->
+								</div>
+								<div class="van-cell__value"><span>
+								<span>
+									3218008723
+								</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+							<div class="van-cell" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>学院</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+									<span>
+										<span>
+											经济与贸易学院
+									</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+							<div class="van-cell" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>专业</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+									<span>
+										国际经济与贸易
+									</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+							<div class="van-cell" data-v-fae8cc3a="">
+								<!---->
+								<div class="van-cell__title">
+									<span>班级</span>
+									<!---->
+								</div>
+								<div class="van-cell__value">
+									<span>
+										国际经济与贸易18(2)
+									</span>
+								</div>
+								<!---->
+								<!---->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
